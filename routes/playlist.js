@@ -28,6 +28,37 @@ router.get('/', function (req, res, next) {
   });
 });
 
+
+router.get('/:id', function (req, res, next) {
+  var playlistId = req.params.id;
+  if (!playlistId || playlistId.length == 0) {
+    res.json({
+      status: 'ERR',
+      message: 'Playlist id is invalid'
+    });
+    return;
+  }
+  authYoutubeService();
+  Youtube.playlistItems.list({
+    "part": "snippet,contentDetails",
+    "playlistId": playlistId,
+    "maxResults": 25
+  }, function (err, data) {
+    if (err != null || data.items.length === 0) {
+      res.json({
+        status: 'ERR',
+        message: 'Your account doesn\'t has any playlist'
+      });
+      return;
+    }
+    res.json({
+      status: 'OK',
+      data: data.items
+    });
+  });
+});
+
+
 router.post('/', function (req, res, next) {
   var title = req.body.title;
   if (!title || title.length == 0) {

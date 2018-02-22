@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -6,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var playlist = require('./routes/playlist');
 var app = express();
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));

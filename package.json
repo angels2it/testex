@@ -10,14 +10,18 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "deferred": "^0.7.9",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
+    "quasar-cli": "^0.15.1",
     "r-json": "^1.2.8",
     "serve-favicon": "^2.4.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-ytb-pll": "0.0.1",
     "youtube-api": "^2.0.9"
   },
   "devDependencies": {
